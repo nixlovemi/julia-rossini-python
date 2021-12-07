@@ -1,0 +1,26 @@
+[CONFIG LINKS]
+- https://dev.to/alvarocavalcanti/setting-up-a-python-remote-interpreter-using-docker-1i24
+
+[CONFIG]
+- run: docker-compose up -d
+- create utf8 database named "supersite"
+- run database scripts
+
+[SERVER API PYTHON]
+- http://127.0.0.1:5001/
+
+[SERVER FRONTEND]
+- http://127.0.0.1:5000/
+
+[DATABASE]
+- postgresql | 127.0.0.1
+- user: postgres
+- pass: <empty>
+- port: 5432
+
+[Trello]
+- https://trello.com
+- board: julia rossini python
+
+[PYTHON OOP]
+- https://realpython.com/python3-object-oriented-programming/

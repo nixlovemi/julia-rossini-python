@@ -1,0 +1,18 @@
+# https://hub.docker.com/r/library/python/tags/
+FROM python:3.9
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends libc-dev
+
+COPY PyRequirements.txt requirements.txt
+RUN pip install -r requirements.txt
+
+# postgres conection
+RUN pip install psycopg2-binary
+
+# Coping source in current directory into the image
+# python:3-onbuild expects the source in /usr/src/app
+COPY . /usr/src/app
+
+# Commands in a list
+CMD ["python", "/usr/src/app/api.py"]
