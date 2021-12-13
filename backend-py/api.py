@@ -6,6 +6,7 @@ from helpers.ApiResponse import ApiResponse
 from helpers.ApiResponseBody import ApiResponseBody
 from entities.TbRoles import TbRoles
 from services.TbRolesSrv import TbRolesSrv
+from services.TbNotificationsSrv import TbNotificationsSrv
 
 # Instantiate the app
 app = Flask(__name__)
@@ -37,10 +38,16 @@ class Teste(Resource):
         '''
 
         try:
-            RoleSrv = TbRolesSrv()
-            Role = RoleSrv.findById(4)
+            # RoleSrv = TbRolesSrv()
+            # Role = RoleSrv.findById(4)
+            # rBody = ApiResponseBody()
+            # rBody.add(0, Role.toObject())
+            # return ApiResponse.generateResponse(200, 'Ok', rBody.getResponse())
+
+            NotificationsSrv = TbNotificationsSrv()
+            Notification = NotificationsSrv.findById(4)
             rBody = ApiResponseBody()
-            rBody.add(0, Role.toObject())
+            rBody.add(0, Notification.toObject())
             return ApiResponse.generateResponse(200, 'Ok', rBody.getResponse())
         except:
             return ApiResponse.generateResponse(500, 'Erro no processo!')
@@ -65,7 +72,7 @@ class Teste(Resource):
 
 # Create routes (v1)
 # https://hackersandslackers.com/flask-routes/
-api.add_resource(Teste, '/api/v1/galaxies')
+api.add_resource(Teste, '/api/v1/random')
 
 # error handling
 @app.errorhandler(404)
