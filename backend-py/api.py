@@ -6,6 +6,7 @@ from helpers.ApiResponse import ApiResponse
 from helpers.ApiResponseBody import ApiResponseBody
 from entities.TbRoles import TbRoles
 from services.TbRolesSrv import TbRolesSrv
+from services.TbDomainsSrv import TbDomainsSrv
 from services.TbNotificationsSrv import TbNotificationsSrv
 
 # Instantiate the app
@@ -44,10 +45,10 @@ class Teste(Resource):
             # rBody.add(0, Role.toObject())
             # return ApiResponse.generateResponse(200, 'Ok', rBody.getResponse())
 
-            NotificationsSrv = TbNotificationsSrv()
-            Notification = NotificationsSrv.findById(4)
+            DomainsSrv = TbDomainsSrv()
+            Domains = DomainsSrv.findById(2)
             rBody = ApiResponseBody()
-            rBody.add(0, Notification.toObject())
+            rBody.add(0, Domains.toObject())
             return ApiResponse.generateResponse(200, 'Ok', rBody.getResponse())
         except:
             return ApiResponse.generateResponse(500, 'Erro no processo!')
