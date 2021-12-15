@@ -9,6 +9,10 @@ from helpers.ApiResponseBody import ApiResponseBody
 # from services.TbNotificationsSrv import TbNotificationsSrv
 from models.TbRoles import TbRoles
 from models.TbNotifications import TbNotifications
+from entities.TbRoles import TbRoles
+from services.TbRolesSrv import TbRolesSrv
+from services.TbDomainsSrv import TbDomainsSrv
+from services.TbNotificationsSrv import TbNotificationsSrv
 
 # Instantiate the app
 app = Flask(__name__)
@@ -52,6 +56,7 @@ class Teste(Resource):
         rBody.add(0, Notif2.toObject())
         return ApiResponse.generateResponse(200, 'Ok', rBody.getResponse())
 
+        '''
         Role = TbRoles()
         newRole = Role.find(2)
         rBody = ApiResponseBody()
@@ -77,11 +82,16 @@ class Teste(Resource):
             Role.abc = 'def'
             rBody = ApiResponseBody()
             rBody.add(0, Role.toObject())
+            DomainsSrv = TbDomainsSrv()
+            Domains = DomainsSrv.findById(2)
+            rBody = ApiResponseBody()
+            rBody.add(0, Domains.toObject())
             return ApiResponse.generateResponse(200, 'Ok', rBody.getResponse())
 
             pass
         except:
-            return ApiResponse.generateResponse(500, 'Erro no processo!')
+            return ApiResponse.generateResponse(500, 'Erro no processo!')`
+        '''
 
         '''
         return {
