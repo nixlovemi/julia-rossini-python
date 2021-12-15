@@ -4,9 +4,11 @@ from flask_restful import Resource, Api
 # from flask import request
 from helpers.ApiResponse import ApiResponse
 from helpers.ApiResponseBody import ApiResponseBody
-from entities.TbRoles import TbRoles
-from services.TbRolesSrv import TbRolesSrv
-from services.TbNotificationsSrv import TbNotificationsSrv
+# from entities.TbRoles import TbRoles
+# from services.TbRolesSrv import TbRolesSrv
+# from services.TbNotificationsSrv import TbNotificationsSrv
+from models.TbRoles import TbRoles
+from models.TbNotifications import TbNotifications
 
 # Instantiate the app
 app = Flask(__name__)
@@ -36,6 +38,26 @@ class Teste(Resource):
         rBody.add(0, Role.toObject())
         return ApiResponse.generateResponse(200, 'Ok', rBody.getResponse())
         '''
+        
+        # Role = TbRoles()
+        # Role.id = 1
+        # Role.abc = 'def'
+        # rBody = ApiResponseBody()
+        # rBody.add(0, Role.toObject())
+        # return ApiResponse.generateResponse(200, 'Ok', rBody.getResponse())
+
+        Notif = TbNotifications()
+        Notif2 = Notif.find(1)
+        rBody = ApiResponseBody()
+        rBody.add(0, Notif2.toObject())
+        return ApiResponse.generateResponse(200, 'Ok', rBody.getResponse())
+
+        Role = TbRoles()
+        newRole = Role.find(2)
+        rBody = ApiResponseBody()
+        rBody.add(0, newRole.toObject())
+        return ApiResponse.generateResponse(200, 'Ok', rBody.getResponse())
+
 
         try:
             # RoleSrv = TbRolesSrv()
@@ -44,11 +66,20 @@ class Teste(Resource):
             # rBody.add(0, Role.toObject())
             # return ApiResponse.generateResponse(200, 'Ok', rBody.getResponse())
 
-            NotificationsSrv = TbNotificationsSrv()
-            Notification = NotificationsSrv.findById(4)
+            # NotificationsSrv = TbNotificationsSrv()
+            # Notification = NotificationsSrv.findById(4)
+            # rBody = ApiResponseBody()
+            # rBody.add(0, Notification.toObject())
+            # return ApiResponse.generateResponse(200, 'Ok', rBody.getResponse())
+
+            Role = TbRoles()
+            Role.id = 1
+            Role.abc = 'def'
             rBody = ApiResponseBody()
-            rBody.add(0, Notification.toObject())
+            rBody.add(0, Role.toObject())
             return ApiResponse.generateResponse(200, 'Ok', rBody.getResponse())
+
+            pass
         except:
             return ApiResponse.generateResponse(500, 'Erro no processo!')
 
